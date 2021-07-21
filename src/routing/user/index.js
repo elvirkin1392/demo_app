@@ -6,15 +6,12 @@ import AppBar from "@material-ui/core/AppBar";
 import clsx from "clsx";
 import {Toolbar, Button} from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-import ExitToApp from "@material-ui/icons/ExitToApp";
+import {Menu as MenuIcon, MoveToInbox as InboxIcon, Mail as MailIcon, ExitToApp} from "@material-ui/icons";
 import {actions as authActions} from 'services/auth';
 import {useDispatch} from 'react-redux';
 import {routeTemplates} from '../routeTemplates'
-import { Route, Switch } from 'react-router-dom';
-import DashboardPage from'pages/dashboardPage'
+import {Route, Switch} from 'react-router-dom';
+import DashboardPage from 'pages/dashboardPage'
 import UsersPage from "pages/usersPage";
 import SettingsPage from "pages/settingsPage";
 
@@ -124,7 +121,7 @@ const User = () => {
         <div className={classes.toolbar}/>
         
         <MuiContainer style={{paddingTop: '50px'}}>
-  
+          
           <Switch>
             <Route
               exact
@@ -142,11 +139,8 @@ const User = () => {
               component={UsersPage}
             />
           </Switch>
-          
         </MuiContainer>
       </main>
-    
-    
     </div>
   );
 };

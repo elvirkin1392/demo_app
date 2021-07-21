@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import User from './users';
+import User from './user';
 import Login from './login';
 import Admin from './admin';
 import getRole from './utils/getRole';
