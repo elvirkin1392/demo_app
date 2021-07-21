@@ -6,7 +6,7 @@ import AppBar from "@material-ui/core/AppBar";
 import clsx from "clsx";
 import {Toolbar, Button} from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
-import {Menu as MenuIcon, MoveToInbox as InboxIcon, Mail as MailIcon, ExitToApp} from "@material-ui/icons";
+import {Menu as MenuIcon, ExitToApp, People as PeopleIcon, Home as HomeIcon, Settings as SettingsIcon} from "@material-ui/icons";
 import {actions as authActions} from 'services/auth';
 import {useDispatch} from 'react-redux';
 import {routeTemplates} from '../routeTemplates'
@@ -62,12 +62,12 @@ const useStyles = makeStyles((theme) => ({
 
 const sidebarList = [
   {
-    list: [{icon: <InboxIcon/>, title: 'Dashboard', link: routeTemplates.dashboardPage,}],
+    list: [{icon: <HomeIcon/>, title: 'Dashboard', link: routeTemplates.dashboardPage,}],
     title: null
   },
   {
-    list: [{icon: <InboxIcon/>, title: 'Users', link: routeTemplates.usersPage,},
-      {icon: <MailIcon/>, title: 'Settings', link: routeTemplates.settingsPage}],
+    list: [{icon: <PeopleIcon/>, title: 'Users', link: routeTemplates.usersPage,},
+      {icon: <SettingsIcon/>, title: 'Settings', link: routeTemplates.settingsPage}],
     title: 'Management'
   }
 ]
