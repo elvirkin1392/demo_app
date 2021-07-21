@@ -1,12 +1,13 @@
 import React, {useMemo} from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import User from './user';
+import User from './users';
 import Login from './login';
 import Admin from './admin';
 import getRole from './utils/getRole';
 import {getModuleState} from 'services/auth';
 import {userRoles} from "lib/enums/roles";
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 function Routing(props) {
   
@@ -26,6 +27,7 @@ function Routing(props) {
   
   return (
     <Router>
+      <CssBaseline/>
       {Routing}
     </Router>
   );
