@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Sidebar = (props) => {
-  const {open, items} = props;
+  const {open, items, logo} = props;
   const classes = useStyles();
   
   
@@ -74,7 +74,7 @@ const Sidebar = (props) => {
         }}
       >
         <div className={classes.toolbar}>
-          Logo
+          {logo}
         </div>
         <Divider/>
         {items.map(item => {

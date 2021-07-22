@@ -43,8 +43,6 @@ function LoginFirstTime(props) {
               placeholder="Confirm your password"
               name="confirm_password"
             />
-            
-            
             <Button type="submit">Sign in</Button>
           </MuiBox>
         </form>

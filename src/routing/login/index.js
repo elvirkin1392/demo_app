@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import SignIn from './signIn';
+import Content from 'routing/login/content';
 
 function Login() {
   return (
     <Switch>
       <Route path="/">
-        <SignIn />
+        <Content />
       </Route>
     </Switch>
   );

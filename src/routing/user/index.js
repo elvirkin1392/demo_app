@@ -1,24 +1,30 @@
-import React, {useState} from 'react';
-import {Container as MuiContainer, Typography} from '@material-ui/core';
+import React, { useState } from "react";
+import { Container as MuiContainer, Typography } from "@material-ui/core";
 import Sidebar from "common/sidebar";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import clsx from "clsx";
-import {Toolbar, Button} from "@material-ui/core";
+import { Toolbar, Button } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
-import {Menu as MenuIcon, ExitToApp, People as PeopleIcon, Home as HomeIcon, Settings as SettingsIcon} from "@material-ui/icons";
-import {actions as authActions} from 'services/auth';
-import {useDispatch} from 'react-redux';
-import {routeTemplates} from '../routeTemplates'
-import {Route, Switch} from 'react-router-dom';
-import DashboardPage from 'pages/dashboardPage'
-import UsersPage from "pages/usersPage";
+import {
+  ExitToApp,
+  Home as HomeIcon,
+  Menu as MenuIcon,
+  People as PeopleIcon,
+  Settings as SettingsIcon,
+} from "@material-ui/icons";
+import { actions as authActions } from "services/auth";
+import { useDispatch } from "react-redux";
+import { routeTemplates } from "../routeTemplates";
+import { Route, Switch } from "react-router-dom";
+import DashboardPage from "pages/dashboardPage";
+import NotesPage from "pages/notesPage";
 import SettingsPage from "pages/settingsPage";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
   },
   menuButton: {
     marginRight: 36,
@@ -27,13 +33,13 @@ const useStyles = makeStyles((theme) => ({
   logOutButton: {
     marginRight: 36,
     marginLeft: 1,
-    textTransform: 'none'
+    textTransform: "none",
   },
   appBar: {
-    background: '#fff',
+    background: "#fff",
     zIndex: theme.zIndex.drawer - 1,
-    width: 'calc(100% - 72px)',
-    transition: theme.transitions.create(['width', 'margin'], {
+    width: "calc(100% - 72px)",
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
@@ -41,15 +47,15 @@ const useStyles = makeStyles((theme) => ({
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
   toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
@@ -62,15 +68,27 @@ const useStyles = makeStyles((theme) => ({
 
 const sidebarList = [
   {
-    list: [{icon: <HomeIcon/>, title: 'Dashboard', link: routeTemplates.dashboardPage,}],
-    title: null
+    list: [
+      {
+        icon: <HomeIcon />,
+        title: "Dashboard",
+        link: routeTemplates.dashboardPage,
+      },
+    ],
+    title: null,
   },
   {
-    list: [{icon: <PeopleIcon/>, title: 'Users', link: routeTemplates.usersPage,},
-      {icon: <SettingsIcon/>, title: 'Settings', link: routeTemplates.settingsPage}],
-    title: 'Management'
-  }
-]
+    list: [
+      { icon: <PeopleIcon />, title: "Notes", link: routeTemplates.notesPage },
+      {
+        icon: <SettingsIcon />,
+        title: "Settings",
+        link: routeTemplates.settingsPage,
+      },
+    ],
+    title: "Management",
+  },
+];
 const User = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(true);
@@ -80,8 +98,8 @@ const User = () => {
   };
   const logout = () => {
     dispatch(authActions.logout());
-  }
-  
+  };
+
   const onSidebarClose = () => {
     setOpen(false);
   };
@@ -101,27 +119,26 @@ const User = () => {
             edge="start"
             className={classes.menuButton}
           >
-            <MenuIcon color='primary'/>
+            <MenuIcon color="primary" />
           </IconButton>
           <Button
             onClick={logout}
             edge="start"
             className={classes.logOutButton}
           >
-            <Typography variant='subtitle2' style={{marginRight: '10px'}}> Log out</Typography>
-            
-            <ExitToApp color='primary'/>
+            <Typography variant="subtitle2" style={{ marginRight: "10px" }}>
+              Log out
+            </Typography>
+
+            <ExitToApp color="primary" />
           </Button>
         </Toolbar>
-      
       </AppBar>
-      <Sidebar open={open} items={sidebarList}/>
+      <Sidebar open={open} items={sidebarList} logo='Logo' />
       <main className={classes.content}>
-        
-        <div className={classes.toolbar}/>
-        
-        <MuiContainer style={{paddingTop: '50px'}}>
-          
+        <div className={classes.toolbar} />
+
+        <MuiContainer style={{ paddingTop: "50px" }}>
           <Switch>
             <Route
               exact
@@ -135,8 +152,8 @@ const User = () => {
             />
             <Route
               exact
-              path={routeTemplates.usersPage}
-              component={UsersPage}
+              path={routeTemplates.notesPage}
+              component={NotesPage}
             />
           </Switch>
         </MuiContainer>
