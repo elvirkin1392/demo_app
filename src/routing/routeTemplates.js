@@ -1,7 +1,8 @@
 export const routeTemplates = {
   dashboardPage: '/',
   settingsPage: '/settings',
-  notesPage: '/notes'
+  notesPage: '/notes',
+  notePage: '/notes/:id'
 };
 
 export const adminRouteTemplates = {

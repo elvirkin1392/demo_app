@@ -20,6 +20,7 @@ import { Route, Switch } from "react-router-dom";
 import DashboardPage from "pages/dashboardPage";
 import NotesPage from "pages/notesPage";
 import SettingsPage from "pages/settingsPage";
+import NotePage from "pages/notePage";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -154,6 +155,11 @@ const User = () => {
               exact
               path={routeTemplates.notesPage}
               component={NotesPage}
+            />
+            <Route
+              exact
+              path={routeTemplates.notePage}
+              component={NotePage}
             />
           </Switch>
         </MuiContainer>

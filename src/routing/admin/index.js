@@ -133,9 +133,9 @@ const Admin = () => {
         </Toolbar>
       </AppBar>
       <Sidebar open={open} items={sidebarList} logo='Admin' />
+      
       <main className={classes.content}>
         <div className={classes.toolbar} />
-
         <MuiContainer style={{ paddingTop: "50px" }}>
           <Switch>
             <Route
