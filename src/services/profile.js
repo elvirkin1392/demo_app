@@ -34,9 +34,8 @@ const slice = createSlice({
       }
     },
     setName(state, {payload}) {
-      const {username, email} = payload
+      const {username} = payload
       state.firstName = username;
-      state.email = email;
     }
   },
 });

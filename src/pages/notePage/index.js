@@ -6,7 +6,7 @@ import { Typography } from "@material-ui/core";
 import Button from "routing/login/styled/button";
 import { Form } from "react-final-form";
 import { FormCKEdtior, FormControl, FormTextField } from "lib/ui";
-import { format } from "date-fns";
+import {format, parseISO} from "date-fns";
 
 const NotePage = () => {
   const notesState = useSelector(getModuleState);
@@ -33,7 +33,7 @@ const NotePage = () => {
           Edit note
         </Typography>
         <Typography variant="subtitle2" style={{ marginBottom: "20px", color: '#949494' }}>
-          {format(notesState[noteID].date, "EEE. d MMM. yyyy  h:mma")}
+          {format(parseISO(notesState[noteID].date), "EEE. d MMM. yyyy  h:mma")}
         </Typography>
       </div>
 

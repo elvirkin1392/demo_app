@@ -10,6 +10,7 @@ import Input from "./styled/input";
 import Button from "./styled/button";
 import { Box as MuiBox, Typography as MuiTypography } from "@material-ui/core";
 import LoginFirstTime from "routing/login/loginFirstTime";
+import { actions as profileActions, getModuleState } from "services/profile";
 
 import { getUserPool } from "cognito.js";
 import { actions as authActions } from "services/auth";
@@ -46,6 +47,12 @@ function SignIn(props) {
             username: values.username,
             userProfile: data.getAccessToken().payload,
             accessToken: data.getAccessToken().getJwtToken(),
+          })
+        );
+        
+        dispatch(
+          profileActions.setName({
+            username: values.username
           })
         );
       },
