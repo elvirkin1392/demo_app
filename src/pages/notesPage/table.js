@@ -29,12 +29,12 @@ const StyledTableRow = withStyles((theme) => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
     },
-  },
+    '&:hover': {
+      background: '#fff0ce',
+      cursor: 'pointer'
+    }
+  }
 }))(TableRow);
-
-function createData( name, calories, fat, carbs, protein) {
-  return { id: shortid.generate(), name, calories, fat, carbs, protein };
-}
 
 
 const useStyles = makeStyles({
@@ -55,7 +55,7 @@ export default function CustomizedTables() {
           <TableRow >
             <StyledTableCell>Name</StyledTableCell>
             <StyledTableCell >Description</StyledTableCell>
-            <StyledTableCell align="right">Date</StyledTableCell>
+            <StyledTableCell align="right">Last updated</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

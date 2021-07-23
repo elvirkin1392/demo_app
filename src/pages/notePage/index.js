@@ -28,11 +28,11 @@ const NotePage = () => {
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: 'flex-end' }}>
         <Typography variant="h5" style={{ marginBottom: "20px" }}>
           Edit note
         </Typography>
-        <Typography variant="subtitle2" style={{ marginBottom: "20px" }}>
+        <Typography variant="subtitle2" style={{ marginBottom: "20px", color: '#949494' }}>
           {format(notesState[noteID].date, "EEE. d MMM. yyyy  h:mma")}
         </Typography>
       </div>

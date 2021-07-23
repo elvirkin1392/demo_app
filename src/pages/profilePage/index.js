@@ -1,14 +1,14 @@
 import React from 'react';
 import {Typography} from "@material-ui/core";
 
-const SettingsPage = () => {
+const ProfilePage = () => {
   return (
     <div>
       <Typography variant="h4" color="textSecondary" style={{marginBottom: '20px'}}>
-        Settings
+        Profile
       </Typography>
     </div>
   );
 };
 
-export default SettingsPage;
+export default ProfilePage;

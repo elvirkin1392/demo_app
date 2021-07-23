@@ -19,7 +19,7 @@ import { routeTemplates } from "../routeTemplates";
 import { Route, Switch } from "react-router-dom";
 import DashboardPage from "pages/dashboardPage";
 import NotesPage from "pages/notesPage";
-import SettingsPage from "pages/settingsPage";
+import ProfilePage from "pages/profilePage";
 import NotePage from "pages/notePage";
 
 const drawerWidth = 240;
@@ -83,8 +83,8 @@ const sidebarList = [
       { icon: <PeopleIcon />, title: "Notes", link: routeTemplates.notesPage },
       {
         icon: <SettingsIcon />,
-        title: "Settings",
-        link: routeTemplates.settingsPage,
+        title: "Profile",
+        link: routeTemplates.profilePage,
       },
     ],
     title: "Management",
@@ -149,7 +149,7 @@ const User = () => {
             <Route
               exact
               path={routeTemplates.settingsPage}
-              component={SettingsPage}
+              component={ProfilePage}
             />
             <Route
               exact
