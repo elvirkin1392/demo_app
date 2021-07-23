@@ -12,6 +12,7 @@ import {useHistory} from 'react-router-dom';
 import {getModuleState} from "services/notes";
 import { useSelector } from 'react-redux';
 import {map, values} from 'ramda';
+import { format } from "date-fns";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -35,13 +36,6 @@ function createData( name, calories, fat, carbs, protein) {
   return { id: shortid.generate(), name, calories, fat, carbs, protein };
 }
 
-const rows = [
-  createData('Liam', '700 Oak Street, Brockton MA 2301', '715-312-2497', 24, 'f'),
-  createData('Oliver', '42 Fairhaven Commons Way, Fairhaven MA 2719\n', '847-368-5914', 37, 'm'),
-  createData('William', '677 Timpany Blvd, Gardner MA 1440\n', '940-603-7099', 24, 'm'),
-  createData( 'Mia', '11 Jungle Road, Leominster MA 1453\n', '703-767-1495', 67, 'f'),
-  createData('Henry', '830 Curran Memorial Hwy, North Adams MA 1247\n', '201-779-4768', 49, 'm'),
-];
 
 const useStyles = makeStyles({
   table: {
@@ -76,7 +70,7 @@ export default function CustomizedTables() {
                 {row.description}
               </StyledTableCell>
               <StyledTableCell align="right">
-                {row.date}
+                {format(row.date, "EEE. d MMM. yyyy  h:mma")}
               </StyledTableCell>
             </StyledTableRow>
           ), values(notesState))}

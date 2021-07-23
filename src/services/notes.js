@@ -13,21 +13,20 @@ const slice = createSlice({
       title: "title",
       id: '1',
       description: "description",
-      date: "20 apr 2021",
+      date: new Date('December 17, 2020 03:24:00'),
     },
     '2': {
       text: "text2",
       title: "title2",
       id: '2',
       description: "description",
-      date: "20 apr 2021",
+      date:  new Date('December 17, 2020 03:24:00'),
     },
   },
   reducers: {
     setNote(state, { payload }) {
-      const { id, title, description } = payload;
-      state[id].title = title;
-      state[id].description = description;
+      const { id, title, description, text } = payload;
+      state[id] = payload;
     },
   },
 });

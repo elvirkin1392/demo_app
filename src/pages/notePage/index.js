@@ -1,42 +1,72 @@
-import React, {useState} from 'react';
-import {useSelector, useDispatch} from "react-redux";
-import {getModuleState, actions as notesActions} from "services/notes";
-import {useHistory, useParams} from "react-router-dom";
-import {TextField, Typography, } from '@material-ui/core';
-import Input from "routing/login/styled/input";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getModuleState, actions as notesActions } from "services/notes";
+import { useParams } from "react-router-dom";
+import { Typography } from "@material-ui/core";
 import Button from "routing/login/styled/button";
 import { Form } from "react-final-form";
+import { FormCKEdtior, FormControl, FormTextField } from "lib/ui";
+import { format } from "date-fns";
 
 const NotePage = () => {
   const notesState = useSelector(getModuleState);
   const routeParams = useParams();
-  const noteId = routeParams.id;
+  const noteID = routeParams.id;
   const dispatch = useDispatch();
-  
+
   const onSubmit = (values) => {
     dispatch(
       notesActions.setNote({
-        id: noteId,
+        id: noteID,
         title: values.title,
-        description: values.description
+        description: values.description,
+        text: values.text,
+        date: new Date(),
       })
     );
-  }
-  
+  };
+
   return (
     <div>
-      <Typography variant='h5' style={{marginBottom: '20px'}}>
-        Edit note
-      </Typography>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="h5" style={{ marginBottom: "20px" }}>
+          Edit note
+        </Typography>
+        <Typography variant="subtitle2" style={{ marginBottom: "20px" }}>
+          {format(notesState[noteID].date, "EEE. d MMM. yyyy  h:mma")}
+        </Typography>
+      </div>
+
       <Form
         onSubmit={onSubmit}
-        initialValues={{ title: notesState[noteId].title, description: notesState[noteId].description }}
+        initialValues={{
+          title: notesState[noteID].title,
+          description: notesState[noteID].description,
+          text: notesState[noteID].text,
+        }}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit} noValidate>
-            <Input  placeholder="Title" name="title" />
-            <Input multiline placeholder="Description" name="description" />
-            <Button type="submit">Save</Button>
-          </form>)}/>
+            <FormControl label="Title">
+              <FormTextField placeholder="Title" name="title" />
+            </FormControl>
+            <FormControl label="Description">
+              <FormTextField
+                multiline
+                rows={5}
+                placeholder="Description"
+                name="description"
+              />
+            </FormControl>
+            <FormControl label="Text">
+              <FormCKEdtior name="text" placeholder="Text" />
+            </FormControl>
+
+            <Button type="submit" style={{ width: "150px" }}>
+              Save
+            </Button>
+          </form>
+        )}
+      />
     </div>
   );
 };
