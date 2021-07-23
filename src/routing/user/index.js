@@ -14,13 +14,15 @@ import {
   Settings as SettingsIcon,
 } from "@material-ui/icons";
 import { actions as authActions } from "services/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { routeTemplates } from "../routeTemplates";
 import { Route, Switch } from "react-router-dom";
 import DashboardPage from "pages/dashboardPage";
 import NotesPage from "pages/notesPage";
 import ProfilePage from "pages/profilePage";
 import NotePage from "pages/notePage";
+import { getModuleState } from "services/profile";
+import { Avatar } from "lib/ui";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -77,7 +79,7 @@ const sidebarList = [
       },
     ],
     title: null,
-    id: '1'
+    id: "1",
   },
   {
     list: [
@@ -89,10 +91,11 @@ const sidebarList = [
       },
     ],
     title: "Management",
-    id: '2'
+    id: "2",
   },
 ];
 const User = () => {
+  const profileState = useSelector(getModuleState);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(true);
   const classes = useStyles();
@@ -124,20 +127,33 @@ const User = () => {
           >
             <MenuIcon color="primary" />
           </IconButton>
-          <Button
-            onClick={logout}
-            edge="start"
-            className={classes.logOutButton}
+          <div
+            style={{
+              color: "#000",
+              display: "flex",
+              alignItems: "center",
+              background: "#fff",
+            }}
           >
+            <Avatar
+              size="small"
+              src={profileState.image}
+              style={{ marginRight: "10px" }}
+            />
             <Typography variant="subtitle2" style={{ marginRight: "10px" }}>
-              Log out
+              {profileState.firstName} {profileState.secondName}
             </Typography>
-
-            <ExitToApp color="primary" />
-          </Button>
+            <Button
+              onClick={logout}
+              edge="start"
+              className={classes.logOutButton}
+            >
+              <ExitToApp color="primary" />
+            </Button>
+          </div>
         </Toolbar>
       </AppBar>
-      <Sidebar open={open} items={sidebarList} logo='Logo' />
+      <Sidebar open={open} items={sidebarList} logo="Logo" />
       <main className={classes.content}>
         <div className={classes.toolbar} />
 
@@ -158,11 +174,7 @@ const User = () => {
               path={routeTemplates.notesPage}
               component={NotesPage}
             />
-            <Route
-              exact
-              path={routeTemplates.notePage}
-              component={NotePage}
-            />
+            <Route exact path={routeTemplates.notePage} component={NotePage} />
           </Switch>
         </MuiContainer>
       </main>

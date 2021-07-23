@@ -6,7 +6,7 @@ import { Typography } from "@material-ui/core";
 import Button from "routing/login/styled/button";
 import { Form } from "react-final-form";
 import { FormCKEdtior, FormControl, FormTextField } from "lib/ui";
-import {format, parseISO} from "date-fns";
+import { format, formatISO, parseISO } from "date-fns";
 
 const NotePage = () => {
   const notesState = useSelector(getModuleState);
@@ -21,18 +21,27 @@ const NotePage = () => {
         title: values.title,
         description: values.description,
         text: values.text,
-        date: new Date(),
+        date: formatISO(new Date(), { representation: "date" }),
       })
     );
   };
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: 'flex-end' }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-end",
+        }}
+      >
         <Typography variant="h5" style={{ marginBottom: "20px" }}>
           Edit note
         </Typography>
-        <Typography variant="subtitle2" style={{ marginBottom: "20px", color: '#949494' }}>
+        <Typography
+          variant="subtitle2"
+          style={{ marginBottom: "20px", color: "#949494" }}
+        >
           {format(parseISO(notesState[noteID].date), "EEE. d MMM. yyyy  h:mma")}
         </Typography>
       </div>

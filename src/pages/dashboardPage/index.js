@@ -69,13 +69,7 @@ const DashboardPage = () => {
       >
         Dashboard
       </Typography>
-      <Typography
-        variant="h5"
-        color="textSecondary"
-        style={{ marginBottom: "20px" }}
-      >
-        It's good to see you, {profileState.firstName} {profileState.secondName}
-      </Typography>
+   
       
       <div style={{ width: "500px", padding: '20px', background: '#fff' }}>
         <Typography
