@@ -77,6 +77,7 @@ const sidebarList = [
       },
     ],
     title: null,
+    id: '1'
   },
   {
     list: [
@@ -88,6 +89,7 @@ const sidebarList = [
       },
     ],
     title: "Management",
+    id: '2'
   },
 ];
 const User = () => {
@@ -148,7 +150,7 @@ const User = () => {
             />
             <Route
               exact
-              path={routeTemplates.settingsPage}
+              path={routeTemplates.profilePage}
               component={ProfilePage}
             />
             <Route

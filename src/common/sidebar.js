@@ -79,7 +79,7 @@ const Sidebar = (props) => {
         <Divider/>
         {items.map(item => {
           
-          return <>
+          return <span key={item.id}>
             <Typography
               style={{
                 textTransform: 'uppercase',
@@ -92,7 +92,7 @@ const Sidebar = (props) => {
             <List>
               <Links list={item.list}/>
             </List>
-          </>
+          </span>
         })}
       
       </Drawer>

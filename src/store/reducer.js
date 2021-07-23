@@ -2,10 +2,12 @@ import { combineReducers } from 'redux';
 
 import { actions as authActions, reducer as authReducer } from 'services/auth';
 import { reducer as notesReducer } from 'services/notes';
+import { reducer as profileReducer} from 'services/profile';
 
 const combinedRootReducer = combineReducers({
   auth: authReducer,
-  notes: notesReducer
+  notes: notesReducer,
+  profile: profileReducer
 });
 
 function rootReducer(state, action) {

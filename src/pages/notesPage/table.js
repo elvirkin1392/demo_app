@@ -12,7 +12,7 @@ import {useHistory} from 'react-router-dom';
 import {getModuleState} from "services/notes";
 import { useSelector } from 'react-redux';
 import {map, values} from 'ramda';
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -70,7 +70,7 @@ export default function CustomizedTables() {
                 {row.description}
               </StyledTableCell>
               <StyledTableCell align="right">
-                {format(row.date, "EEE. d MMM. yyyy  h:mma")}
+                {format(parseISO(row.date), "EEE. d MMM. yyyy  h:mma")}
               </StyledTableCell>
             </StyledTableRow>
           ), values(notesState))}

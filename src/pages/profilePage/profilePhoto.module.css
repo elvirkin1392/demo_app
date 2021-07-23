@@ -1,0 +1,28 @@
+
+
+.customFileUpload {
+    cursor: pointer;
+}
+
+.customFileUpload input[type="file"] {
+    display: none;
+}
+
+.customFileUpload .uploadButton {
+    pointer-events: none;
+}
+
+.uploadContainer .buttons {
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    white-space: nowrap;
+    margin-bottom: 10px;
+
+}
+
+.avatarContainer {
+    position: relative;
+    margin-right: 6px;
+}
+

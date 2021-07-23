@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import shortid from "shortid";
+import { formatISO } from "date-fns";
 
 export const getModuleState = (state) => state.notes;
 
@@ -8,24 +8,28 @@ export const selectors = {};
 const slice = createSlice({
   name: "notes",
   initialState: {
-    '1': {
+    1: {
       text: "text",
       title: "title",
-      id: '1',
+      id: "1",
       description: "description",
-      date: new Date('December 17, 2020 03:24:00'),
+      date: formatISO(new Date("December 17, 2020 03:24:00"), {
+        representation: "date",
+      }),
     },
-    '2': {
+    2: {
       text: "text2",
       title: "title2",
-      id: '2',
+      id: "2",
       description: "description",
-      date:  new Date('December 17, 2020 03:24:00'),
+      date: formatISO(new Date("December 17, 2020 03:24:00"), {
+        representation: "date",
+      }),
     },
   },
   reducers: {
     setNote(state, { payload }) {
-      const { id, title, description, text } = payload;
+      const { id } = payload;
       state[id] = payload;
     },
   },
